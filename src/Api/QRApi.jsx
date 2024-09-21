@@ -19,22 +19,19 @@ const QRCodeGenerator = () => {
     const canvas = qrCodeRef.current.querySelector('canvas');
     if (canvas) {
       const imageFormat = format === 'jpeg' ? 'image/jpeg' : 'image/png';
-      const size = 256; // Size of the QR code
+      const size = 256; 
       const whiteCanvas = document.createElement('canvas');
       const ctx = whiteCanvas.getContext('2d');
       
-      // Set the dimensions of the white canvas
-      whiteCanvas.width = size + 20; // Add some padding
-      whiteCanvas.height = size + 20; // Add some padding
+      whiteCanvas.width = size + 20; 
+      whiteCanvas.height = size + 20; 
 
-      // Fill the canvas with white color
       ctx.fillStyle = 'white';
       ctx.fillRect(0, 0, whiteCanvas.width, whiteCanvas.height);
 
-      // Draw the QR code on the white canvas
-      ctx.drawImage(canvas, 10, 10, size, size); // Centered with padding
+      ctx.drawImage(canvas, 10, 10, size, size);
 
-      // Create a download link
+
       const imageUrl = whiteCanvas.toDataURL(imageFormat);
       const link = document.createElement('a');
       link.href = imageUrl;
@@ -57,7 +54,7 @@ const QRCodeGenerator = () => {
         {inputText && (
           <div className='qr' ref={qrCodeRef}>
             <div className='iconhead'>
-              <select value={format} onChange={handleFormatChange} style={{ marginBottom: '10px' }}>
+              <select value={format} onChange={handleFormatChange} style={{ margin: '10px' }}>
                 <option value="png">PNG</option>
                 <option value="jpeg">JPEG</option>
               </select>
@@ -66,7 +63,7 @@ const QRCodeGenerator = () => {
               </button>
             </div>
             <h2>Your QR Code:</h2>
-            <QRCodeCanvas value={inputText} size={256} />
+            <QRCodeCanvas value={inputText} />
             <br/><br/>
           </div>
         )}
